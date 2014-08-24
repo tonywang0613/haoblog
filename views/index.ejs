@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<%- include header %>
+<% posts.forEach(function(post,index){%>
+	<p><h2><a href="/u/<%=post.name%>/<%=post.time.day%>/<%=post.title%>"><%=post.title%></a></h2></p>
+	<p class="info">
+		Author: <a href="/u/<%=post.name%>"><%=post.name%></a>|
+		Date: <%=post.time.minute%>
+		<%- include tags%>
+	</p>
+	<p class="bodyContent"><%-post.post%></p>
+	<% if (post.comments){%>
+	<p class="info">Read count：<%= post.pv %> | Comments count：<%= post.comments.length %></p>
+	<%}%>
+<%})%>
+<%- include paging %>
+<%- include footer %>
